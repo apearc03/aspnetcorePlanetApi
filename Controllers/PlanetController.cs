@@ -32,5 +32,18 @@ namespace testApi.Controllers
             })
             .ToArray();
         }
+
+
+        [HttpGet("{planet}")]
+        public Planet GetPlanet(string planet)
+        {
+            return _context.Planets.Find(planet);
+        }
+
+        [HttpGet("all")]
+        public List<Planet> GetAllPlanet()
+        {
+            return _context.Planets.ToList();
+        }
     }
 }
