@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using testApi.Controllers;
+using Microsoft.AspNetCore.Mvc;
 
 namespace testApi.test
 {
@@ -26,13 +27,11 @@ namespace testApi.test
             var mockRepository = new Mock<IPlanetRepository>();
             mockRepository.Setup(r => r.GetPlanets()).Returns(planets);
             mockRepository.Setup(r => r.GetPlanetByName("Earth")).Returns(earth);
-            
-            var controller = new PlanetController(mockRepository.Object);
-            //When
-            Planet p = controller.GetPlanet("Earth");
 
+            var controller = new PlanetController(mockRepository.Object);
+            ActionResult<Planet> p = controller.GetPlanet("Earth");
             //Then
-            Assert.Equal(p, earth);
+            Assert.Equal(p.Value, earth);
         }
 
         //test all planets
