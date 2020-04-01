@@ -12,16 +12,14 @@ namespace testApi.Controllers
     [Route("[controller]")]
     public class PlanetController : ControllerBase
     {
-           private readonly ILogger<PlanetController> _logger;
            private readonly PlanetContext _context;
            
-           public PlanetController(ILogger<PlanetController> logger, PlanetContext context)
+           public PlanetController(PlanetContext context)
         {
-            _logger = logger;
             _context = context;
         }
 
-        [HttpGet]
+        /*[HttpGet]
         public IEnumerable<Planet> Get()
         {
             Console.WriteLine("retrieving all  " + _context.Planets.First().name);
@@ -31,7 +29,7 @@ namespace testApi.Controllers
                 name = "planet" + index
             })
             .ToArray();
-        }
+        }*/
 
 
         [HttpGet("{planet}")]
