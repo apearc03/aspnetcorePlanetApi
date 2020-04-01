@@ -12,36 +12,23 @@ namespace testApi.Controllers
     [Route("[controller]")]
     public class PlanetController : ControllerBase
     {
-           private readonly PlanetContext _context;
+           private readonly IPlanetRepository _repository;
            
-           public PlanetController(PlanetContext context)
+           public PlanetController(IPlanetRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
-
-        /*[HttpGet]
-        public IEnumerable<Planet> Get()
-        {
-            Console.WriteLine("retrieving all  " + _context.Planets.First().name);
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new Planet
-            {
-                name = "planet" + index
-            })
-            .ToArray();
-        }*/
-
 
         [HttpGet("{planet}")]
         public Planet GetPlanet(string planet)
         {
-            return _context.Planets.Find(planet);
+            return _repository.GetPlanetByName(planet);
         }
 
         [HttpGet("all")]
         public List<Planet> GetAllPlanet()
         {
-            return _context.Planets.ToList();
+            return _repository.GetPlanets();
         }
     }
 }
