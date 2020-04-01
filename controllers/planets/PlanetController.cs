@@ -21,20 +21,27 @@ namespace testApi.Controllers
         }
 
         [HttpGet("{planet}")]
-        public ActionResult<Planet> GetPlanet(string planet)
+        public ActionResult<Planet> getPlanet(string planet)
         {
-            Planet result = _repository.GetPlanetByName(planet);
+            Planet result = _repository.getPlanetByName(formatRequestPlanet(planet));
             if (result == null)
             {
-                return BadRequest("Planet does not exist.");
+                return BadRequest(new { errorMessage = "Planet does not exist." });
             }
             return result;
         }
 
         [HttpGet("all")]
-        public List<Planet> GetAllPlanet()
+        public List<Planet> getAllPlanets()
         {
-            return _repository.GetPlanets();
+            return _repository.getPlanets();
+        }
+
+        public string formatRequestPlanet(string planet)
+        {
+            return string.IsNullOrEmpty(planet) 
+            ? planet 
+            : Char.ToUpperInvariant(planet[0]) + planet.Substring(1).ToLowerInvariant();
         }
     }
 }

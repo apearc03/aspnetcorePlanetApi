@@ -6,8 +6,8 @@ namespace testApi.data
 {
     public interface IPlanetRepository
     {
-        Planet GetPlanetByName(string name);
-        List<Planet> GetPlanets();
+        Planet getPlanetByName(string name);
+        List<Planet> getPlanets();
 
     }
 

@@ -14,12 +14,12 @@ namespace testApi.data
             this._context = context;
         }
         
-        public Planet GetPlanetByName(string planet)
+        public Planet getPlanetByName(string planet)
         {
             return _context.Planets.Find(planet);
         }
 
-        public List<Planet> GetPlanets()
+        public List<Planet> getPlanets()
         {
             return _context.Planets.ToList();
         }
