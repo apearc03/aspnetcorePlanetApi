@@ -1,4 +1,3 @@
-
 using System.Collections.Generic;
 using System.Linq;
 
@@ -13,7 +12,7 @@ namespace testApi.data
         {
             this._context = context;
         }
-        
+
         public Planet getPlanetByName(string planet)
         {
             return _context.Planets.Find(planet);
