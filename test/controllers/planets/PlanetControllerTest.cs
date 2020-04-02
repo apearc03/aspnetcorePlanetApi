@@ -1,14 +1,12 @@
 using Moq;
 using testApi.data;
 using Xunit;
-using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using System.Linq;
-using testApi.Controllers;
+using testApi.Controllers.planets;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
-namespace testApi.test
+namespace testApi.test.planets
 {
     public class PlanetControllerTest
     {
@@ -43,8 +41,8 @@ namespace testApi.test
         [Fact]
         public void getAllPlanets()
         {
-            List<Planet> planetsResponse = controller.getAllPlanets();
-            Assert.Equal(planets, planetsResponse);
+            ActionResult<List<Planet>> planetsResponse = controller.getAllPlanets();
+            Assert.Equal(planets, planetsResponse.Value);
         }
 
         [Fact]

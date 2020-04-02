@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace testApi.Controllers
+namespace testApi.Controllers.error
 {
 
     [ApiController]

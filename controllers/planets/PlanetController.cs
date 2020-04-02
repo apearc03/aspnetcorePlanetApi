@@ -1,13 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using testApi.data;
 
-namespace testApi.Controllers
+namespace testApi.Controllers.planets
 {
     [ApiController]
     [Route("[controller]")]
@@ -32,7 +28,7 @@ namespace testApi.Controllers
         }
 
         [HttpGet("all")]
-        public List<Planet> getAllPlanets()
+        public ActionResult<List<Planet>> getAllPlanets()
         {
             return _repository.getPlanets();
         }
