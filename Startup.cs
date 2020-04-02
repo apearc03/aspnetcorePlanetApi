@@ -27,7 +27,7 @@ namespace testApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<PlanetContext>(options => options.UseSqlite("Data Source=datasource/planets.db"));
+            services.AddDbContext<PlanetContext>(options => options.UseSqlite("Data Source=datasource/planetData.db"));
             services.AddScoped<IPlanetRepository, PlanetRepository>();
             services.AddControllers();
         }
