@@ -4,7 +4,6 @@ using Xunit;
 using System.Collections.Generic;
 using testApi.Controllers.planets;
 using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace testApi.test.planets
 {
