@@ -52,12 +52,5 @@ namespace testApi.test.planets
             Assert.Null(p.Value);
         }
 
-        [Fact]
-        public void formatPlanet()
-        {
-            string badFormat = "eARTH";
-            String formatted = controller.formatRequestPlanet(badFormat);
-            Assert.Equal("Earth", formatted);
-        }
     }
 }

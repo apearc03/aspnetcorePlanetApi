@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
+using testApi.Controllers.planets.planetutils;
 using testApi.data;
 
 namespace testApi.Controllers.planets
@@ -17,9 +18,10 @@ namespace testApi.Controllers.planets
         }
 
         [HttpGet("{planet}")]
+        [Produces("application/json")]
         public ActionResult<Planet> getPlanet(string planet)
         {
-            Planet result = _repository.getPlanetByName(formatRequestPlanet(planet));
+            Planet result = _repository.getPlanetByName(PlanetRequestFormatter.formatRequestPlanet(planet));
             if (result == null)
             {
                 return BadRequest(new { errorMessage = "Planet does not exist." });
@@ -28,16 +30,11 @@ namespace testApi.Controllers.planets
         }
 
         [HttpGet("all")]
+        [Produces("application/json")]
         public ActionResult<List<Planet>> getAllPlanets()
         {
             return _repository.getPlanets();
         }
 
-        public string formatRequestPlanet(string planet)
-        {
-            return string.IsNullOrEmpty(planet) 
-            ? planet 
-            : Char.ToUpperInvariant(planet[0]) + planet.Substring(1).ToLowerInvariant();
-        }
     }
 }

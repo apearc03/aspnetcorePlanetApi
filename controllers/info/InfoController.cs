@@ -7,9 +7,10 @@ namespace testApi.Controllers.info
     [Route("[controller]")]
     public class InfoController : ControllerBase
     {
-        private readonly string path = Path.GetFullPath(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "../../../html/info.html"));
+        public static readonly string path = Path.GetFullPath(Path.Combine(System.AppDomain.CurrentDomain.BaseDirectory, "../../../html/info.html"));
 
         [HttpGet]
+        [Produces("text/html")]
         public ContentResult get()
         {
             string text = System.IO.File.ReadAllText(path);
