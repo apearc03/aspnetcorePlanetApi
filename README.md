@@ -36,7 +36,8 @@ dotnet build
 ```console
 dotnet run
 ```
+To run unit tests.
 ```console
-dotnet test for the unit tests
+dotnet test
 ```
 visit localhost:5000
