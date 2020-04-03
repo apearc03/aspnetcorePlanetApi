@@ -18,7 +18,7 @@ Unit tests with xunit, moq.
 
 # Running locally
 
-Make sure dotnet 3.1+ is installed
+Make sure dotnet core 3.1+ is installed
 
 Clone the repo
 ```console
